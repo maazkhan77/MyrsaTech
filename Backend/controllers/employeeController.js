@@ -30,6 +30,7 @@ const getEmployeeById = (req, res) => {
 };
 
 const addEmployee = (req, res) => {
+  console.log('here')
   const { name, empcode, grade, email } = req.body;
   connectDB.query(
     "INSERT INTO employee SET ?",

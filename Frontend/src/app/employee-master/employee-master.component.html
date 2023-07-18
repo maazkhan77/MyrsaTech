@@ -1,0 +1,133 @@
+<nav class="navbar navbar-light" style="background-color: #e3f2fd">
+  <a class="navbar-brand">Employee Master</a>
+  <!-- <form class="form-inline">
+    <input
+      class="form-control mr-sm-2"
+      type="search"
+      placeholder="Enter Employee Id"
+      aria-label="Search"
+    />
+    <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+</form> -->
+  <button
+    type="button"
+    data-toggle="modal"
+    data-target="#exampleModal"
+    class="btn btn-success my-2 my-sm-0 ml-2"
+    type="submit"
+  >
+    Add Employee
+  </button>
+</nav>
+
+<table class="table table-hover mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Employee Code</th>
+      <th scope="col">Grade</th>
+      <th scope="col">Email</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>001</td>
+      <td>A+</td>
+      <td>mark@mail.com</td>
+      <td>
+        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-danger ml-2">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Employee</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter name"
+              formControlName="name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Employee Code</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter employee code"
+              formControlName="empcode"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Grade</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter grade"
+              formControlName="grade"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+              formControlName="email"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="submit"
+          (click)="addEmployee(this.formValue.value)"
+          class="btn btn-primary"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
