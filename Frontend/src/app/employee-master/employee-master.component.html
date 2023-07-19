@@ -9,7 +9,8 @@
     />
     <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
 </form> -->
-  <button
+  <div>
+    <button
     type="button"
     data-toggle="modal"
     data-target="#exampleModal"
@@ -18,7 +19,19 @@
   >
     Add Employee
   </button>
+  <button
+    type="button"
+    class="btn btn-danger my-2 my-sm-0 ml-2"
+    (click)="deleteAllEmployees()"
+  >
+    Delete All Employee
+  </button>
+  </div>
 </nav>
+
+<div class="container-fluid">
+    <div class="d-flex mt-2"><input class="form-control mr-sm-2 w-25" (change)="getEmployeeByName($event)" type="search" placeholder="Search" aria-label="Search">
+<button class="btn btn-dark btn-sm" type="button">Search</button></div>
 
 <table class="table table-hover mt-3">
   <thead>
@@ -32,19 +45,20 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>001</td>
-      <td>A+</td>
-      <td>mark@mail.com</td>
+    <tr *ngFor="let item of data">
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.name}}</td>
+      <td>{{item.empcode}}</td>
+      <td>{{item.grade}}</td>
+      <td>{{item.email}}</td>
       <td>
-        <button class="btn btn-primary">Edit</button>
-        <button class="btn btn-danger ml-2">Delete</button>
+        <button class="btn btn-primary" routerLink="/update/{{item.id}}">Edit</button>
+        <button class="btn btn-danger ml-2" (click)="deleteEmployeeById(item.id)">Delete</button>
       </td>
     </tr>
   </tbody>
 </table>
+</div>
 
 <!-- Modal -->
 <div
@@ -124,6 +138,7 @@
           type="submit"
           (click)="addEmployee(this.formValue.value)"
           class="btn btn-primary"
+          data-dismiss="modal"
         >
           Add
         </button>

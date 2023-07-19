@@ -48,7 +48,6 @@ const addEmployee = (req, res) => {
 
 const updateEmployee = (req, res) => {
   const id = req.params.id;
-  console.log(id);
   const { name, empcode, grade, email } = req.body;
   connectDB.query(
     "UPDATE employee SET name = ?, empcode = ?,grade = ?,email = ? WHERE id = ?",

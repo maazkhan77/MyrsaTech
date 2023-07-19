@@ -10,6 +10,7 @@ import { employeeModel } from './employeeModel';
 })
 export class EmployeeMasterComponent implements OnInit {
   formValue!: FormGroup;
+  data: undefined | employeeModel[];
   constructor(private formBuilder: FormBuilder, private api: ApiService) {}
 
   ngOnInit(): void {
@@ -19,11 +20,53 @@ export class EmployeeMasterComponent implements OnInit {
       grade: [''],
       email: [''],
     });
+    this.getAllEmployees();
+  }
+
+  getAllEmployees() {
+    this.api.getAllEmployees().subscribe((res) => {
+      console.log(res);
+      this.data = res;
+    });
+  }
+
+  getEmployeeByName(event: any) {
+    this.api.getEmployeeByName(event.target.value).subscribe(
+      (res) => {
+        console.log(res);
+        this.data = res;
+      },
+      (err) => (this.data = res)
+    );
   }
 
   addEmployee(data: employeeModel) {
-    this.api.addEmployee(data).subscribe((res) => {
-      console.log(res);
-    });
+    this.api.addEmployee(data).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        this.formValue.reset();
+        this.getAllEmployees();
+      }
+    );
+  }
+
+  deleteAllEmployees() {
+    this.api.deleteAllEmployees().subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => this.getAllEmployees()
+    );
+  }
+
+  deleteEmployeeById(Id: number) {
+    this.api.deleteEmployeeById(Id).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => this.getAllEmployees()
+    );
   }
 }

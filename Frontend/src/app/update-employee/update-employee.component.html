@@ -1,0 +1,68 @@
+<div
+  class="row d-flex justify-content-center mt-3"
+  style="width: 95vw; height: 95vh"
+>
+  <div class="col-sm-4">
+    <div class="card border-info">
+      <div class="card-header">Edit Employee</div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter name"
+              [(ngModel)]="employee.name"
+              name="name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Employee Code</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter employee code"
+              [(ngModel)]="employee.empcode"
+              name="empcode"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Grade</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter grade"
+              [(ngModel)]="employee.grade"
+              name="grade"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+              [(ngModel)]="employee.email"
+              name="email"
+            />
+          </div>
+          <div class="d-flex justify-content-end mr-2">
+            <button type="button" routerLink="/" class="btn btn-secondary">
+              Back
+            </button>
+            <button type="submit" (click)="updateEmployee()" class="btn btn-primary ml-3">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
