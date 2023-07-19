@@ -31,13 +31,10 @@ export class EmployeeMasterComponent implements OnInit {
   }
 
   getEmployeeByName(event: any) {
-    this.api.getEmployeeByName(event.target.value).subscribe(
-      (res) => {
-        console.log(res);
-        this.data = res;
-      },
-      (err) => (this.data = res)
-    );
+    this.api.getEmployeeByName(event.target.value).subscribe((res) => {
+      console.log(res);
+      this.data = res;
+    });
   }
 
   addEmployee(data: employeeModel) {
